@@ -1,0 +1,4 @@
+use_aws_resources: false
+bucket_name: overlord_rouni 
+sounds_prefix: resources/sounds/
+allow_savefile: true
