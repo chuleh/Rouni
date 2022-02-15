@@ -1,5 +1,5 @@
-import os, asyncio, random
-from discord.ext import commands
+import os, asyncio, random, youtube_dl, discord
+from discord.ext import commands, tasks
 from pkg.cogs.sounds import Sounds
 from dotenv import load_dotenv
 
@@ -8,7 +8,9 @@ load_dotenv()
 DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 
 # create bot
-ronald = commands.Bot(command_prefix='!')
+subcommands = discord.Intents().all()
+client = discord.Client(subcommands=subcommands)
+ronald = commands.Bot(command_prefix='!r',subcommands=subcommands)
 
 # attach cogs
 ronald.add_cog(Sounds(ronald))
@@ -32,6 +34,24 @@ async def on_ready():
 async def unstuck(ctx):
     for client in ronald.voice_clients:
         await client.disconnect(force=True)
+
+@ronald.command()
+async def join(ctx):
+    if not ctx.message.author.voice:
+        await ctx.send("{} goes full ronald").format(ctx.message.author.name)
+        return
+    else:
+        channel = ctx.message.author.voice.channel
+    await channel.connect()
+
+@ronald.command(name='casquet')
+async def casquet(ctx):
+    voice_client = ctx.message.guild.voice_client
+    if voice_clients.is_connected():
+        await voice_client.disconnect()
+    else:
+        await ctx.send("Ronald does not compute")
+
 
 # start bot
 ronald.run(DISCORD_BOT_TOKEN)
