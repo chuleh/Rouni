@@ -25,6 +25,14 @@ ronald.add_cog(Sounds(ronald))
 async def on_ready():
     print('Ronald has become self-aware')
 
+@ronald.command
+async def join(ctx):
+    if (ctx.author.voice):
+        channel = ctx.message.author.voice.channel
+        await channel.connect()
+    else:
+        await ctx.send('{0.user} is full ronald'.format(client))
+
 @ronald.command()
 async def casquet(ctx):
     for client in ronald.voice_clients:
