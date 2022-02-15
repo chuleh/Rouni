@@ -26,7 +26,6 @@ ronald.add_cog(Sounds(ronald))
 async def on_ready():
     print("ready")
 
-
 @ronald.command()
 async def casquet(ctx):
     for client in ronald.voice_clients:
@@ -34,12 +33,12 @@ async def casquet(ctx):
 
 @ronald.command()
 async def status(ctx):
-    channel = ronald.get_channel(727307693924286517)
+    channel = ronald.get_channel(285648579605954560)
     await channel.send('Ronald is self aware')
 
 @ronald.command()
 async def stop (ctx):
-    channel = ronald.get_channel(727307693924286517)
+    channel = ronald.get_channel(285648579605954560)
     await channel.send('Ronald does not compute')
     
 
