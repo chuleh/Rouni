@@ -1,7 +1,4 @@
-import os
-
-import boto3
-
+import os, boto3
 
 def sync_resources(bucket_name, resource_prefix, local_path):
     client = boto3.resource('s3')
