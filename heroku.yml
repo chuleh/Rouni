@@ -1,4 +1,7 @@
 build:
   docker:
-    build: Dockerfile
     worker: worker/Dockerfile
+run:
+  worker:
+    command:
+      - python3 main.py
