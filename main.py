@@ -12,8 +12,7 @@ from pkg.cogs.sounds import Sounds
 from dotenv import load_dotenv
 
 # access discord token
-load_dotenv()
-DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+DISCORD_BOT_TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 
 # create bot
 ronald = commands.Bot(command_prefix='!r ', help_comm=None)
